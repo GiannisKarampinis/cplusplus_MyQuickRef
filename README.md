@@ -29,3 +29,5 @@ Main usages:
 3.  read write
 4.  provide information about the class
 
+# TemplateUsages.cpp
+Templates are basically a set of orders/rules to the compiler, to write code for us. The basic purpose of templates is to create a function that its body could be the same but it will be called for different types. The templated function IS NOT an actual function. It is created only when it's called based on how it's called. Even if there could be syntax errors, in case of not calling the function, some compilers even won't prompt for those errors. 
