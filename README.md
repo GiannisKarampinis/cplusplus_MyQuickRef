@@ -31,3 +31,18 @@ Main usages:
 
 # 2. TemplateUsages.cpp
 Templates are basically a set of orders/rules to the compiler, to write code for us. The basic purpose of templates is to create a function that its body could be the same but it will be called for different types. The templated function IS NOT an actual function. It is created only when it's called based on how it's called. Even if there could be syntax errors, in case of not calling the function, some compilers even won't prompt for those errors. 
+
+## Difference Between `push_back` and `emplace_back` for `std::vector` in C++
+
+In C++, `std::vector` provides two methods for adding elements to the end of the vector: `push_back` and `emplace_back`. Both methods serve to append elements, but they have differences in terms of how they handle the construction of elements. Here’s a detailed comparison:
+
+### `push_back`
+- **Function**: `push_back` takes a single argument, which is the value to be added to the end of the vector.
+- **Construction**: It constructs a copy of the argument and adds that copy to the vector. This means that if the argument is a temporary or an object that can be moved, a move constructor will be used. If the argument is an lvalue, a copy constructor will be used.
+- **Example**:
+  ```cpp
+  std::vector<int> vec;
+  int value = 10;
+  vec.push_back(value); // Uses copy constructor
+  vec.push_back(20);    // Uses move constructor if possible
+
