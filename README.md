@@ -113,5 +113,27 @@ int main() {
 
     return 0;
 }
+```
+### 🔐 Why Use Pointer Tagging?
+Memory Efficiency: No extra fields or memory needed for flags.
 
+Performance: Avoids cache misses and memory allocations.
+
+Concurrency: Often used in lock-free data structures to store version bits or mark deletion.
+
+### ⚠️ Warnings
+Only use tagging if you're absolutely sure those bits are unused (i.e., due to guaranteed alignment).
+
+Always cast pointers to uintptr_t for bitwise operations and back.
+
+Never dereference a tagged pointer without untagging it first.
+
+### ✅ Summary
+Aligned memory addresses end in 0 (in binary), leaving some LSBs unused.
+
+uintptr_t safely casts pointers to integers and back.
+
+Tagged pointers are useful for metadata storage without extra space.
+
+Commonly used in systems programming, memory allocators, and concurrent data structures.
 
