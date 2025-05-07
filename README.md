@@ -1,6 +1,5 @@
 # My Quick Reference Guide for C/C++ Development
-
-
+<br><br>
 # 1. StaticMembers.cpp
 A static member inside a class is a shared member or resource of all the objects created from that class. All objects of that class will share the same resource (copy) and access this same member which is allocated only once. (It is basically a class characteristic and not an object’s one.)
 
