@@ -63,16 +63,16 @@ In summary, use push_back when you already have an object to add to the vector a
 
 Sure! Here's a complete Markdown-formatted explanation you can include in your GitHub documentation or README:
 
-## 🏷️ Pointer Tagging in C
+# 🏷️ Pointer Tagging in C
 
-### What is Pointer Tagging?
+## What is Pointer Tagging?
 Pointer tagging is a low-level programming technique where you use unused bits of a pointer to store metadata — typically a small flag or tag — without needing extra memory or data structures.
 
 This is possible because of **pointer alignment**.
 
 ---
 
-### 📏 Memory Alignment and Least Significant Bits (LSBs)
+## 📏 Memory Alignment and Least Significant Bits (LSBs)
 
 Most data types are **aligned** in memory for performance and architectural reasons. For example, on most systems:
 - An `int` is 4 bytes and aligned to 4-byte boundaries.
@@ -87,7 +87,7 @@ Since these bits are guaranteed to be `0`, they can be reused for other purposes
 
 ---
 
-### 💡 How to Use Tagged Pointers
+## 💡 How to Use Tagged Pointers
 
 You can safely store flags in those unused bits. Here's a practical example using C:
 
@@ -114,21 +114,21 @@ int main() {
     return 0;
 }
 ```
-### 🔐 Why Use Pointer Tagging?
+## 🔐 Why Use Pointer Tagging?
 Memory Efficiency: No extra fields or memory needed for flags.
 
 Performance: Avoids cache misses and memory allocations.
 
 Concurrency: Often used in lock-free data structures to store version bits or mark deletion.
 
-### ⚠️ Warnings
+## ⚠️ Warnings
 Only use tagging if you're absolutely sure those bits are unused (i.e., due to guaranteed alignment).
 
 Always cast pointers to uintptr_t for bitwise operations and back.
 
 Never dereference a tagged pointer without untagging it first.
 
-### ✅ Summary
+## ✅ Summary
 Aligned memory addresses end in 0 (in binary), leaving some LSBs unused.
 
 uintptr_t safely casts pointers to integers and back.
@@ -136,4 +136,3 @@ uintptr_t safely casts pointers to integers and back.
 Tagged pointers are useful for metadata storage without extra space.
 
 Commonly used in systems programming, memory allocators, and concurrent data structures.
-
