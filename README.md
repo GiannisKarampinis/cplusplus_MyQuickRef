@@ -27,10 +27,10 @@ Main usages:
 2.  shared memory
 3.  read write
 4.  provide information about the class
-
+<br><br>
 # 2. TemplateUsages.cpp
 Templates are basically a set of orders/rules to the compiler, to write code for us. The basic purpose of templates is to create a function that its body could be the same but it will be called for different types. The templated function IS NOT an actual function. It is created only when it's called based on how it's called. Even if there could be syntax errors, in case of not calling the function, some compilers even won't prompt for those errors. 
-
+<br><br>
 # 3. Difference Between `push_back` and `emplace_back` for `std::vector` in C++
 
 In C++, `std::vector` provides two methods for adding elements to the end of the vector: `push_back` and `emplace_back`. Both methods serve to append elements, but they have differences in terms of how they handle the construction of elements. Here’s a detailed comparison:
@@ -61,8 +61,8 @@ In C++, `std::vector` provides two methods for adding elements to the end of the
 In summary, use push_back when you already have an object to add to the vector and emplace_back when you want to construct the object directly in place with the provided arguments.
 
 Sure! Here's a complete Markdown-formatted explanation you can include in your GitHub documentation or README:
-
-# 🏷️ Pointer Tagging in C
+<br><br>
+# 4. 🏷️ Pointer Tagging in C
 
 ## What is Pointer Tagging?
 Pointer tagging is a low-level programming technique where you use unused bits of a pointer to store metadata — typically a small flag or tag — without needing extra memory or data structures.
