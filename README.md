@@ -63,17 +63,55 @@ In summary, use push_back when you already have an object to add to the vector a
 
 Sure! Here's a complete Markdown-formatted explanation you can include in your GitHub documentation or README:
 
-```markdown
 ## 🏷️ Pointer Tagging in C
 
 ### What is Pointer Tagging?
-
 Pointer tagging is a low-level programming technique where you use unused bits of a pointer to store metadata — typically a small flag or tag — without needing extra memory or data structures.
 
 This is possible because of **pointer alignment**.
 
 ---
 
-### 📏 Memory Alignment and Least Significant Bits (LS
-```
+### 📏 Memory Alignment and Least Significant Bits (LSBs)
+
+Most data types are **aligned** in memory for performance and architectural reasons. For example, on most systems:
+- An `int` is 4 bytes and aligned to 4-byte boundaries.
+- This means its memory address must be divisible by 4.
+- Valid addresses might be: `0x1000`, `0x1004`, `0x1008`, etc.
+
+In binary, these aligned addresses **end in two zero bits**:
+- `0x1004` = `0001 0000 0000 0100`
+- The least significant bits (LSBs), bits 0 and 1, are `00`
+
+Since these bits are guaranteed to be `0`, they can be reused for other purposes without affecting the actual pointer.
+
+---
+
+### 💡 How to Use Tagged Pointers
+
+You can safely store flags in those unused bits. Here's a practical example using C:
+
+```c
+#include <stdint.h>
+#include <stdio.h>
+
+int main() {
+    int x = 42;
+    int *ptr = &x;
+
+    // Tag the pointer (set bit 0)
+    uintptr_t tagged = ((uintptr_t)ptr) | 0x01;
+
+    // Check if tagged
+    if (tagged & 0x01) {
+        printf("Pointer is tagged.\n");
+    }
+
+    // Recover original pointer
+    int *real_ptr = (int *)(tagged & ~0x01);
+    printf("Original value: %d\n", *real_ptr);
+
+    return 0;
+}
+
 
